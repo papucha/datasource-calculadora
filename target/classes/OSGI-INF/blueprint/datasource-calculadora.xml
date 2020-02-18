@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0" xmlns:enc="http://karaf.apache.org/xmlns/jasypt/v1.0.0"
+	xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+	<cm:property-placeholder id="props" persistent-id="datasource.pruebaconexion" />
+
+
+	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dsCalculadora">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url" value="jdbc:sqlserver://localhost:1433;DatabaseName=calculadoraESB" />
+		<property name="username" value="prueba" />
+		<property name="password" value="123" />
+		<property name="validationQuery" value="Select 1" />
+		<property name="validationQueryTimeout" value="5" />
+		<property name="initialSize" value="1" />
+	</bean>
+
+	<service interface="javax.sql.DataSource" ref="dsCalculadora">
+		<service-properties>
+			<entry key="osgi.jndi.service.name" value="jdbc/calculadoraPaula" />
+			<entry key="datasource.name" value="practicadatasource" />
+			<entry key="name" value="practicadatasource" />
+		</service-properties>
+	</service>
+</blueprint>

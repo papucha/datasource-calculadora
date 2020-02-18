@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1581692003118
+Build-Jdk: 1.8.0_111
+Built-By: USER
+Bundle-Blueprint: OSGI-INF/blueprint/datasource-calculadora.xml
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.html
+Bundle-ManifestVersion: 2
+Bundle-Name: DATASOURCE
+Bundle-SymbolicName: calculadora-datasource.1.0.6
+Bundle-Version: 1.0.6
+Created-By: Apache Maven Bundle Plugin
+DynamicImport-Package: *
+Export-Service: javax.sql.DataSource;osgi.jndi.service.name=jdbc/calcula
+ doraPaula;datasource.name=practicadatasource;name=practicadatasource
+Tool: Bnd-3.2.0.201605172007
